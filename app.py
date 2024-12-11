@@ -45,9 +45,7 @@ api = FastAPI()
 
 # Initialize FAISS and embeddings
 model_path = "sentence-transformers/all-MiniLM-L12-v2"
-model_kwargs = {'device': 'cuda'}
-encode_kwargs = {'normalize_embeddings': False}
-HF_embeddings = HuggingFaceEmbeddings(model_name=model_path, model_kwargs=model_kwargs, encode_kwargs=encode_kwargs)
+HF_embeddings = HuggingFaceEmbeddings(model_name=model_path)
 
 # Load the FAISS vector store
 faiss_store = FAISS.load_local("tafasir_quran_faiss_vectorstore", embeddings=HF_embeddings, allow_dangerous_deserialization=True)
